@@ -18,7 +18,7 @@ From the terminal:
  
 ## UI Display
 * When users are on devices with a screen’s width > 420px, the calculator is floating in the center of the screen.
-* When users are on devices with a screen’s width < 420px, the calculator takes a full*screen display for the best mobile experience.
+* When users are on devices with a screen’s width < 420px, the calculator takes a full-screen display for the best mobile experience.
  
 ## Functionalities
 * Users can click on num pads to input a number, then perform the following math calculations:
