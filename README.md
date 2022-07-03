@@ -1,6 +1,6 @@
-## This project is a coding assessment for CryptoFi.
+#### This project is a coding assessment for CryptoFi.
  
-# Calculator was written with React JS
+# Calculator app written with React JS
  
 ## Get started
 ### For Mac and Linux users
