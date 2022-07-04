@@ -15,7 +15,7 @@
     * [The evaluate function](https://github.com/zacharytruong/calculator-react#The-evaluate-function)
     * [The evaluateMisc function](https://github.com/zacharytruong/calculator-react#The-evaluateMisc-function)
     * [Formatting our display numbers](https://github.com/zacharytruong/calculator-react#Formatting-our-display-numbers)
-    * [The end](https://github.com/zacharytruong/calculator-react#the-end)
+
 
 ## Get started
 ### For Mac and Linux users
