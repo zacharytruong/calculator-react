@@ -36,8 +36,9 @@ A live version of this project is hosted on 👉 [Github Page](https://zacharytr
 
 ## UI Display
 * When users are on devices with a screen’s width > 420px, the calculator is floating in the center of the screen.
+    * <img src="https://raw.githubusercontent.com/zacharytruong/calculator-react/main/src/media/large-screen-ss.jpg" alt="App on large screen" width="300">
 * When users are on devices with a screen’s width < 420px, the calculator takes a full-screen display for the best mobile experience.
- 
+    * <img src="https://raw.githubusercontent.com/zacharytruong/calculator-react/main/src/media/small-screen-ss.jpg" alt="App on small screen" width="300">
 ## Functionalities
 * Users can click on num pads to input a number, then perform the following math calculations:
   * Add
