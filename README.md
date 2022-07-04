@@ -25,8 +25,8 @@ From the terminal:
  
 ### For Windows users
 * Edit `package.json` row `15`:
-    * from `"start": "PORT=8000 react*scripts start",`
-    * to `"start": "set PORT=8000 && react*scripts start"`
+    * from `"start": "PORT=8000 react-scripts start",`
+    * to `"start": "set PORT=8000 && react-scripts start"`
 * From the terminal:
     * Run `npm i`
     * Run `npm start`
