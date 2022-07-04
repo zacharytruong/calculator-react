@@ -115,6 +115,7 @@ Lastly, we convert the result to a string, then return that string as the final 
 Our `output` container has 2 rows:
 * History row displays `previousOperand` `operation`.
 * Current input row display `currentOperand`.
+
 We create a global integer formatter component in `global` folder, the formatter uses `Intl.NumberFormat` method. The `formatInteger` function uses the formatter to format `previousOperand` and `currentOperand`. For eaach value, we would not want the `formatInteger` function to format our decimal values for better accuracy, so after performing a check if the value exists or not, we split it to `[integer, decimal]`, then we format `integer` part only.
 
 The end.
