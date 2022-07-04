@@ -31,6 +31,9 @@ From the terminal:
     * Run `npm i`
     * Run `npm start`
  
+## Live Demo
+A live version of this project is hosted on 👉 [Github Page](https://zacharytruong.github.io/calculator-react)
+
 ## UI Display
 * When users are on devices with a screen’s width > 420px, the calculator is floating in the center of the screen.
 * When users are on devices with a screen’s width < 420px, the calculator takes a full-screen display for the best mobile experience.
