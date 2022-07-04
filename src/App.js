@@ -1,5 +1,6 @@
 import { useReducer } from 'react';
 import './App.css';
+import MiscButton from './components/MiscButton';
 import Numpad from './components/Numpad';
 import OperationButton from './components/OperationButton';
 import ACTIONS from './global/ACTIONS';
@@ -78,45 +79,19 @@ function reducer(state, { type, payload }) {
       }
       return {
         ...state,
+        currentOperand: evaluate(state),
         overwrite: true,
         operation: null,
-        currentOperand: evaluate(state),
         previouseOperand: null
       };
 
-    case ACTIONS.PLUS_MINUS:
+    case ACTIONS.MISC:
       if (state.currentOperand == null) return state;
-      if (state.previouseOperand != null) {
-        return {
-          ...state,
-          currentOperand: evaluate(state),
-          overwrite: true
-        };
-      }
-      let result;
-      const integer = parseFloat(state.currentOperand);
-      if (integer > 0) {
-        result = -Math.abs(integer);
-      } else {
-        result = Math.abs(integer);
-      }
       return {
         ...state,
-        currentOperand: result.toString(),
-        overwrite: true
+        currentOperand: evaluateMisc(state, payload)
       };
 
-    case ACTIONS.PERCENTAGE:
-      if (state.currentOperand == null) return state;
-      let percentage = parseFloat(state.currentOperand) / 100;
-      return {
-        ...state,
-        currentOperand: percentage.toString(),
-        previouseOperand: null,
-        operation: null,
-        overwrite: true
-      };
-      
     default:
       throw new Error();
   }
@@ -125,8 +100,9 @@ function reducer(state, { type, payload }) {
 function evaluate({ previouseOperand, currentOperand, operation }) {
   const prev = parseFloat(previouseOperand);
   const cur = parseFloat(currentOperand);
-  if (isNaN(prev) || isNaN(cur)) return '';
+
   let result;
+  if (isNaN(prev) || isNaN(cur)) return '';
   switch (operation) {
     case '+':
       result = prev + cur;
@@ -140,8 +116,26 @@ function evaluate({ previouseOperand, currentOperand, operation }) {
     case '÷':
       result = prev / cur;
       break;
+    default:
+      throw new Error();
+  }
+  return result.toString();
+}
+
+function evaluateMisc({ currentOperand }, { operation }) {
+  const cur = parseFloat(currentOperand);
+  let result;
+  if (isNaN(cur)) return '';
+  switch (operation) {
     case '±':
-      result = prev + cur;
+      if (cur > 0) {
+        result = -Math.abs(cur);
+        break;
+      }
+      result = Math.abs(cur);
+      break;
+    case '%':
+      result = cur / 100;
       break;
     default:
       throw new Error();
@@ -168,8 +162,8 @@ function App() {
         <div className="current-operand">{formatInteger(currentOperand)}</div>
       </div>
       <button onClick={() => dispatch({ type: ACTIONS.CLEAR })}>AC</button>
-      <button onClick={() => dispatch({ type: ACTIONS.PLUS_MINUS })}>±</button>
-      <button onClick={() => dispatch({ type: ACTIONS.PERCENTAGE })}>%</button>
+      <MiscButton operation="±" dispatch={dispatch} />
+      <MiscButton operation="%" dispatch={dispatch} />
       <OperationButton operation="÷" dispatch={dispatch} />
       <Numpad digit="7" dispatch={dispatch} />
       <Numpad digit="8" dispatch={dispatch} />
@@ -183,13 +177,14 @@ function App() {
       <Numpad digit="2" dispatch={dispatch} />
       <Numpad digit="3" dispatch={dispatch} />
       <OperationButton operation="+" dispatch={dispatch} />
-      <Numpad
-        className="span-two bottom-right"
-        digit="0"
-        dispatch={dispatch}
-      />
+      <Numpad className="span-two bottom-right" digit="0" dispatch={dispatch} />
       <Numpad digit="." dispatch={dispatch} />
-      <button onClick={() => dispatch({ type: ACTIONS.EVALUATE })}>=</button>
+      <button
+        className="bottom-left"
+        onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
+      >
+        =
+      </button>
     </div>
   );
 }

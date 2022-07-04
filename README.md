@@ -31,3 +31,4 @@ From the terminal:
 * Users can subsequently click the math operator; the calculator will perform math operations based on the chosen operator, then save the result as the starting number.
 * Users can click the AC button to clear all existing context.
 * Display numbers are formatted in international "en*us" format.
+
