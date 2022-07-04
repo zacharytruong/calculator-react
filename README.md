@@ -1,7 +1,22 @@
 #### This project is a coding assessment for CryptoFi.
  
 # Calculator app written with React JS
- 
+
+## Table of Content
+
+* [Get started](https://github.com/zacharytruong/calculator-react#get-started)
+    * [For Mac and Linux users](https://github.com/zacharytruong/calculator-react#for-mac-and-linux-users)
+    * [For Windows users](https://github.com/zacharytruong/calculator-react#for-windows-users)
+* [UI Display](https://github.com/zacharytruong/calculator-react#ui-display)
+* [Functionalities](https://github.com/zacharytruong/calculator-react#functionalities)
+* [The process of building this project](https://github.com/zacharytruong/calculator-react#The-process-of-building-this-project)
+    * [Design/Layout](https://github.com/zacharytruong/calculator-react#design-layout)
+    * [The reducer function](https://github.com/zacharytruong/calculator-react#The-reducer-function)
+    * [The evaluate function](https://github.com/zacharytruong/calculator-react#The-evaluate-function)
+    * [The evaluateMisc function](https://github.com/zacharytruong/calculator-react#The-evaluateMisc-function)
+    * [Formatting our display numbers](https://github.com/zacharytruong/calculator-react#Formatting-our-display-numbers)
+    * [The end](https://github.com/zacharytruong/calculator-react#the-end)
+
 ## Get started
 ### For Mac and Linux users
 From the terminal:
@@ -58,7 +73,8 @@ The reducer function is used to handle the operation logics when user clicks on 
 
 Because the values of the `type` propety are constant based on the value of our button groups, we can set them as global value as `ACTIONS` object to reduce the manual spelling and human-error.
 
-### Here are the scenarios when user interacts with the calculator app controlled by our `reducer` function:
+### The reducer function
+Here are the scenarios when user interacts with the calculator app controlled by our `reducer` function:
 * User clicks on the numpad buttons:
     * The app will update the `currentOperand` value to the user's input by appending new input to the end of the `currentOperand`.
     * If the `currentOperand` is "0", and new user's input is also "0", the calculator app should not display "00" or "000" and so on; we discard the new input by returning the same `state` object.
@@ -97,4 +113,4 @@ Our `output` container has 2 rows:
 * Current input row display `currentOperand`.
 We create a global integer formatter component in `global` folder, the formatter uses `Intl.NumberFormat` method. The `formatInteger` function uses the formatter to format `previousOperand` and `currentOperand`. For eaach value, we would not want the `formatInteger` function to format our decimal values for better accuracy, so after performing a check if the value exists or not, we split it to `[integer, decimal]`, then we format `integer` part only.
 
-#### You have reached the end of this document.
+#### The end.
