@@ -22,6 +22,14 @@ function reducer(state, { type, payload }) {
         return state;
       }
 
+      // User clicks the period at the beginning
+      if (payload.digit === '.' && state.currentOperand == null) {
+        return {
+          ...state,
+          currentOperand: '.'
+        }
+      }
+      
       // User clicks multiple period during input,
       // return the old value (string) instead of updating it.
       if (payload.digit === '.' && state.currentOperand.includes('.')) {
